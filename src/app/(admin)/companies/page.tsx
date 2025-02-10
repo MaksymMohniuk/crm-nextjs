@@ -1,10 +1,6 @@
-import AddCompanyButton from "@/components/add-company-button";
 import CompanyRow from "@/components/company-row";
 import CompanyTable from "@/components/company-table";
-import Header from "@/components/header";
-import SearchInput from "@/components/search-input";
 import { Status } from "@/components/status-label";
-import Toolbar from "@/components/toolbar";
 import React from "react";
 
 export interface PageProps {}
@@ -12,10 +8,6 @@ export interface PageProps {}
 export default function Page({}: PageProps) {
   return (
     <>
-      <Header>Companies</Header>
-      <Toolbar action={<AddCompanyButton />}>
-        <SearchInput />
-      </Toolbar>
       <CompanyTable>
         <CompanyRow
           id={1}
