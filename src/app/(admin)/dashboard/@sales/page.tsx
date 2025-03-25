@@ -1,17 +1,29 @@
 import React from "react";
 import { getSummarySales } from "../../../../lib/api";
 import SummaryTable from "../../../../components/summary-table";
-import SummaryTableHeader from "../../../../components//summary-table-header";
+import SummaryTableHeader from "../../../../components/summary-table-header"; 
 import SummaryTableCell from "../../../../components/summary-table-cell";
 import DashboardCard from "../../../../components/dashboard-card";
 
+
+interface Sale {
+  companyId: string;
+  companyTitle: string;
+  sold: number;
+  income: number;
+}
+
+
 export interface PageProps {}
+
+
 export default async function Page({}: PageProps) {
-  const data = await new Promise((res) => {
+  const data = (await new Promise<Sale[]>((res) => {
     setTimeout(() => {
       res(getSummarySales());
     }, 4000);
-  });
+  })) as Sale[];
+
   return (
     <DashboardCard label={"Sales details"}>
       <SummaryTable
