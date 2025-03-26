@@ -1,14 +1,19 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
+
+
 export interface LogoUploaderProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
   label?: string;
+  square?: boolean; 
 }
+
 export default function LogoUploader({
   label,
   placeholder,
   id,
+  square,
   ...rest
 }: LogoUploaderProps) {
   return (
@@ -16,7 +21,9 @@ export default function LogoUploader({
       {label && <p className="text-base color-gray-900">{label}</p>}
       <label
         htmlFor={id}
-        className="flex flex-col items-center justify-center w-40 h-40 bg-white border border-slate-900 border-dashed rounded-full cursor-pointer"
+        className={`flex flex-col items-center justify-center w-40 h-40 bg-white border border-slate-900 border-dashed cursor-pointer ${
+          square ? 'rounded-full' : 'rounded'
+        }`}
       >
         <Image
           className="mb-1"
